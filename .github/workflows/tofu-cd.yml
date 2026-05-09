@@ -34,6 +34,14 @@ jobs:
                   mkdir -p "$HOME/.terraform.d/plugin-cache"
                   echo "TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache" >> "$GITHUB_ENV"
 
+            - name: Configure module auth
+              env:
+                  TF_MODULES_TOKEN: ${{ secrets.TF_MODULES_TOKEN }}
+              run: |
+                  git config --global \
+                    url."https://oauth2:${TF_MODULES_TOKEN}@github.com/".insteadOf \
+                    "ssh://git@github.com/"
+
             - name: Configure AWS credentials
               uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
               with:
@@ -93,6 +101,14 @@ jobs:
                   mkdir -p "$HOME/.terraform.d/plugin-cache"
                   echo "TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache" >> "$GITHUB_ENV"
 
+            - name: Configure module auth
+              env:
+                  TF_MODULES_TOKEN: ${{ secrets.TF_MODULES_TOKEN }}
+              run: |
+                  git config --global \
+                    url."https://oauth2:${TF_MODULES_TOKEN}@github.com/".insteadOf \
+                    "ssh://git@github.com/"
+
             - name: Configure AWS credentials
               uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
               with:
@@ -139,6 +155,14 @@ jobs:
               run: |
                   mkdir -p "$HOME/.terraform.d/plugin-cache"
                   echo "TF_PLUGIN_CACHE_DIR=$HOME/.terraform.d/plugin-cache" >> "$GITHUB_ENV"
+
+            - name: Configure module auth
+              env:
+                  TF_MODULES_TOKEN: ${{ secrets.TF_MODULES_TOKEN }}
+              run: |
+                  git config --global \
+                    url."https://oauth2:${TF_MODULES_TOKEN}@github.com/".insteadOf \
+                    "ssh://git@github.com/"
 
             - name: Configure AWS credentials
               uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
